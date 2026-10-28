@@ -1,1 +1,80 @@
-/* Primitive scales and semantic aliases. Components read the semantic names only. */
+/*
+  Two layers. Primitives name the raw value. Semantic names describe the role.
+  Components only read the semantic names. Light mode lives on :root.
+  Dark mode, later, reassigns those same semantic names.
+*/
+
+:root {
+  /* Primitive: warm stone */
+  --stone-0: oklch(0.995 0.004 90);
+  --stone-50: oklch(0.975 0.012 88);
+  --stone-100: oklch(0.95 0.014 86);
+  --stone-200: oklch(0.91 0.016 84);
+  --stone-300: oklch(0.84 0.02 80);
+  --stone-400: oklch(0.72 0.022 70);
+  --stone-500: oklch(0.58 0.02 62);
+  --stone-700: oklch(0.4 0.02 55);
+  --stone-900: oklch(0.27 0.02 52);
+
+  /* Primitive: ink gray */
+  --gray-700: oklch(0.24 0 0);
+  --gray-800: oklch(0.2 0 0);
+  --gray-900: oklch(0.16 0 0);
+
+  /* Primitive: type, space, radius */
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --text-sm: 0.75rem;
+  --text-md: 0.875rem;
+  --text-lg: 1rem;
+  --weight-medium: 500;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-full: 9999px;
+
+  /* Semantic: color */
+  --color-bg: var(--stone-50);
+  --color-bg-raised: var(--stone-0);
+  --color-text: var(--stone-900);
+  --color-text-muted: var(--stone-500);
+  --color-accent: var(--gray-700);
+  --color-accent-hover: var(--gray-800);
+  --color-accent-active: var(--gray-900);
+  --color-on-accent: var(--stone-0);
+  --color-border: var(--stone-300);
+  --color-border-strong: var(--stone-400);
+  --color-quiet-hover: var(--stone-100);
+  --color-focus: var(--color-accent);
+
+  /* Semantic: type, space, radius */
+  --font-ui: var(--font-sans);
+  --font-size-sm: var(--text-sm);
+  --font-size-md: var(--text-md);
+  --font-size-lg: var(--text-lg);
+  --font-weight-label: var(--weight-medium);
+
+  --space-2xs: var(--space-1);
+  --space-xs: var(--space-2);
+  --space-sm: var(--space-3);
+  --space-md: var(--space-4);
+  --space-lg: var(--space-5);
+  --space-xl: var(--space-6);
+  --space-2xl: var(--space-8);
+  --space-3xl: var(--space-10);
+
+  --radius-default: var(--radius-full);
+
+  --shadow-border:
+    0 0 0 0.5px var(--color-border), 0 2px 2px -1px oklch(0 0 0 / 0.12),
+    0 4px 4px -4px oklch(0 0 0 / 0.12);
+}

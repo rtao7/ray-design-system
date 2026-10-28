@@ -1,2 +1,2 @@
-/** Public components for apps that depend on ray-ui. */
-export {}
+export { Button } from './components/Button/index.ts'
+export type { ButtonProps, ButtonVariant } from './components/Button/index.ts'
