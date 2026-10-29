@@ -57,6 +57,11 @@ export default function App() {
             Ghost
           </Button>
         </div>
+        <div className={styles.row}>
+          <Button icon={<PlusIcon />} aria-label="Add" />
+          <Button variant="outline" icon={<PlusIcon />} aria-label="Add outline" />
+          <Button variant="ghost" icon={<PlusIcon />} aria-label="Add ghost" />
+        </div>
       </section>
     </main>
   )

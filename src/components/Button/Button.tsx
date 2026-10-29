@@ -3,10 +3,23 @@ import styles from "./Button.module.css";
 
 export type ButtonVariant = "primary" | "outline" | "ghost";
 
-export type ButtonProps = {
+type ButtonBaseProps = {
   variant?: ButtonVariant;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "aria-label">;
+
+type LabeledButtonProps = ButtonBaseProps & {
+  children: ReactNode;
   icon?: ReactNode;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  "aria-label"?: string;
+};
+
+type IconOnlyButtonProps = ButtonBaseProps & {
+  icon: ReactNode;
+  children?: never;
+  "aria-label": string;
+};
+
+export type ButtonProps = LabeledButtonProps | IconOnlyButtonProps;
 
 export function Button({
   variant = "primary",
@@ -16,10 +29,17 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
+  const iconOnly = icon != null && children == null;
+
   return (
     <button
       type={type}
-      className={[styles.button, styles[variant], className]
+      className={[
+        styles.button,
+        styles[variant],
+        iconOnly && styles.iconOnly,
+        className,
+      ]
         .filter(Boolean)
         .join(" ")}
       {...props}

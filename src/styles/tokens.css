@@ -20,6 +20,8 @@
   --gray-700: oklch(0.24 0 0);
   --gray-800: oklch(0.2 0 0);
   --gray-900: oklch(0.16 0 0);
+  --black-a12: oklch(0 0 0 / 0.12);
+  --black-a24: oklch(0 0 0 / 0.24);
 
   /* Primitive: type, space, radius */
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
@@ -28,6 +30,8 @@
   --text-lg: 1rem;
   --weight-medium: 500;
 
+  /* Spaces */
+  --space-0: 0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -37,7 +41,7 @@
   --space-8: 2rem;
   --space-10: 2.5rem;
 
-  --radius-none: 0px;
+  --radius-none: 0;
   --radius-sm: 2px;
   --radius-md: 6px;
   --radius-full: 9999px;
@@ -51,8 +55,8 @@
   --color-accent-hover: var(--gray-800);
   --color-accent-active: var(--gray-900);
   --color-on-accent: var(--stone-0);
-  --color-border: var(--stone-300);
-  --color-border-strong: var(--stone-400);
+  --color-border: var(--black-a12);
+  --color-border-strong: var(--black-a24);
   --color-quiet-hover: var(--stone-100);
   --color-focus: var(--color-accent);
 
