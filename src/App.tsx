@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from './components/Button/index.ts'
+import { Switch } from './components/Switch/index.ts'
 import styles from './App.module.css'
 
 function PlusIcon() {
@@ -7,6 +8,35 @@ function PlusIcon() {
     <svg viewBox="0 0 16 16" aria-hidden="true">
       <path
         d="M8 3.5v9M3.5 8h9"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        d="M3.5 8.5 6.5 11.5 12.5 4.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        d="M4.5 4.5 11.5 11.5M11.5 4.5 4.5 11.5"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.5"
@@ -61,6 +91,32 @@ export default function App() {
           <Button icon={<PlusIcon />} aria-label="Add" />
           <Button variant="outline" icon={<PlusIcon />} aria-label="Add outline" />
           <Button variant="ghost" icon={<PlusIcon />} aria-label="Add ghost" />
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <h2>Switch</h2>
+        <div className={styles.row}>
+          <div className={styles.example}>
+            <Switch>Off</Switch>
+            <span className={styles.token}>--color-control</span>
+          </div>
+          <div className={styles.example}>
+            <Switch defaultChecked>On</Switch>
+            <span className={styles.token}>--color-accent</span>
+          </div>
+          <div className={styles.example}>
+            <Switch icon={<CloseIcon />}>Icon</Switch>
+          </div>
+          <div className={styles.example}>
+            <Switch icon={<CloseIcon />} checkedIcon={<CheckIcon />}>
+              Swap
+            </Switch>
+          </div>
+          <div className={styles.example}>
+            <Switch disabled>Disabled</Switch>
+          </div>
+          <Switch aria-label="Notifications" />
         </div>
       </section>
     </main>

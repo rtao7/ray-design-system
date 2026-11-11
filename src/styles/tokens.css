@@ -58,6 +58,8 @@
   --color-border: var(--black-a12);
   --color-border-strong: var(--black-a24);
   --color-quiet-hover: var(--stone-100);
+  --color-control: var(--stone-400);
+  --color-control-hover: var(--stone-500);
   --color-focus: var(--color-accent);
 
   /* Semantic: type, space, radius */
