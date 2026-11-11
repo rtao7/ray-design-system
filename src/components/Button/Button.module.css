@@ -10,7 +10,7 @@
   font-weight: var(--font-weight-label);
   line-height: 1;
   cursor: pointer;
-  padding: var(--space-xs) var(--space-md);
+  padding: var(--space-sm) var(--space-lg);
   font-size: var(--font-size-md);
 }
 
