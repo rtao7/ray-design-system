@@ -165,7 +165,7 @@ export function ReplyBox({
       [{ height: `${from}px` }, { height: `${to}px` }],
       {
         duration: 360,
-        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        easing: "cubic-bezier(0, 0, 0.2, 1)",
         fill: "forwards",
       },
     );

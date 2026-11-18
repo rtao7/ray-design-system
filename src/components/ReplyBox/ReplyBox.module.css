@@ -7,7 +7,7 @@
   margin: 0;
   padding: var(--space-sm);
   border: var(--border-default) solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   background: var(--color-bg-raised);
   font-family: var(--font-ui);
   color: var(--color-text);
@@ -45,7 +45,7 @@
 .sentClip {
   min-height: 0;
   overflow: hidden;
-  transition: opacity 280ms ease;
+  transition: opacity 280ms ease-out;
 }
 
 .compose {
@@ -77,7 +77,7 @@
 
 .editor {
   position: relative;
-  min-height: calc(1.5em * 2);
+  min-height: 1.5em;
   font-size: var(--font-size-md);
   line-height: 1.5;
   white-space: pre-wrap;
