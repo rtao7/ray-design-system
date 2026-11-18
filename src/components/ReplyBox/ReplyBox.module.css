@@ -1,10 +1,11 @@
 .box {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+  display: grid;
+  grid-template-rows: 1fr 0fr;
+  align-content: start;
+  position: relative;
   width: 100%;
   margin: 0;
-  padding: var(--space-md);
+  padding: var(--space-sm);
   border: var(--border-default) solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-bg-raised);
@@ -13,12 +14,53 @@
   transition: background-color 150ms ease;
 }
 
+.box[data-phase="sent"] {
+  grid-template-rows: 0fr auto;
+}
+
+.resizing {
+  overflow: hidden;
+}
+
+.box[data-phase="sent"].resizing {
+  grid-template-rows: 1fr 0fr;
+}
+
+.box[data-phase="sent"].resizing .sentClip {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  left: var(--space-sm);
+}
+
 .box:hover:not(:focus-within) {
   background: var(--color-quiet-hover);
 }
 
 .box[aria-disabled="true"]:hover {
   background: var(--color-bg-raised);
+}
+
+.composeClip,
+.sentClip {
+  min-height: 0;
+  overflow: hidden;
+  transition: opacity 280ms ease;
+}
+
+.compose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.box[data-phase="sent"] .composeClip,
+.sentClip {
+  opacity: 0;
+}
+
+.box[data-phase="sent"] .sentClip {
+  opacity: 1;
 }
 
 .recipient {
@@ -68,8 +110,13 @@
 }
 
 .action {
-  padding: var(--space-sm);
+  padding: var(--space-2);
   border-radius: var(--radius-md);
+}
+
+.action > span {
+  width: var(--font-size-md);
+  height: var(--font-size-md);
 }
 
 .action:disabled,
@@ -78,4 +125,77 @@
   background-color: var(--color-accent);
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.sending,
+.sending:disabled,
+.sending:disabled:hover,
+.sending:disabled:active {
+  cursor: progress;
+  opacity: 1;
+}
+
+.spinner {
+  transform-origin: center;
+  animation: spin 700ms linear infinite;
+}
+
+.sentRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.success {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+  color: var(--color-accent);
+}
+
+.box[data-phase="sent"] .success circle,
+.box[data-phase="sent"] .success path {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: draw 500ms ease forwards;
+}
+
+.box[data-phase="sent"] .success path {
+  animation-delay: 150ms;
+}
+
+.sentMessage {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+.expand {
+  margin-left: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .composeClip,
+  .sentClip {
+    transition: none;
+  }
+
+  .box[data-phase="sent"] .success circle,
+  .box[data-phase="sent"] .success path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
