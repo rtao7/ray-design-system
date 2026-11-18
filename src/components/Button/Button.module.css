@@ -2,10 +2,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-xs);
+  gap: var(--space-2xs);
   margin: 0;
   border: none;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
   font-family: var(--font-ui);
   font-weight: var(--font-weight-label);
   line-height: 1;
@@ -15,7 +15,7 @@
 }
 
 .iconOnly {
-  padding: var(--space-xs);
+  padding: var(--space-2xs);
 }
 
 .icon {

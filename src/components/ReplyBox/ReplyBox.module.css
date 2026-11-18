@@ -7,11 +7,11 @@
   margin: 0;
   padding: var(--space-sm);
   border: var(--border-default) solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface);
   background: var(--color-bg-raised);
   font-family: var(--font-ui);
   color: var(--color-text);
-  transition: background-color 150ms ease;
+  transition: background-color var(--duration-fast) var(--ease-standard);
 }
 
 .box[data-phase="sent"] {
@@ -45,7 +45,7 @@
 .sentClip {
   min-height: 0;
   overflow: hidden;
-  transition: opacity 280ms ease-out;
+  transition: opacity var(--duration-base) var(--ease-out);
 }
 
 .compose {
@@ -110,8 +110,8 @@
 }
 
 .action {
-  padding: var(--space-2);
-  border-radius: var(--radius-md);
+  padding: var(--space-xs);
+  border-radius: var(--radius-control);
 }
 
 .action > span {
@@ -137,13 +137,13 @@
 
 .spinner {
   transform-origin: center;
-  animation: spin 700ms linear infinite;
+  animation: spin var(--duration-loop) var(--ease-linear) infinite;
 }
 
 .sentRow {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-2xs);
 }
 
 .success {
@@ -157,11 +157,11 @@
 .box[data-phase="sent"] .success path {
   stroke-dasharray: 40;
   stroke-dashoffset: 40;
-  animation: draw 500ms ease forwards;
+  animation: draw var(--duration-slower) var(--ease-standard) forwards;
 }
 
 .box[data-phase="sent"] .success path {
-  animation-delay: 150ms;
+  animation-delay: var(--duration-fast);
 }
 
 .sentMessage {
@@ -176,6 +176,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+
   .composeClip,
   .sentClip {
     transition: none;

@@ -10,7 +10,7 @@
 .intro {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-2xs);
 }
 
 .kicker {
