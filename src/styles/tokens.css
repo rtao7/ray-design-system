@@ -46,6 +46,8 @@
   --radius-md: 6px;
   --radius-full: 9999px;
 
+  --border-1: 1px;
+
   /* Semantic: color */
   --color-bg: var(--stone-50);
   --color-bg-raised: var(--stone-0);
@@ -79,7 +81,7 @@
   --space-2xl: var(--space-8);
   --space-3xl: var(--space-10);
 
-  --radius-default: var(--radius-full);
+  --border-default: var(--border-1);
 
   --shadow-border:
     0 0 0 0.5px var(--color-border), 0 2px 2px -1px oklch(0 0 0 / 0.12),

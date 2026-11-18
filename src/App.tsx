@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from './components/Button/index.ts'
+import { ReplyBox } from './components/ReplyBox/index.ts'
 import { Switch } from './components/Switch/index.ts'
 import styles from './App.module.css'
 
@@ -48,6 +49,7 @@ function CloseIcon() {
 
 export default function App() {
   const [saved, setSaved] = useState(false)
+  const [sentReply, setSentReply] = useState<string | null>(null)
 
   return (
     <main className={styles.page}>
@@ -118,6 +120,19 @@ export default function App() {
           </div>
           <Switch aria-label="Notifications" />
         </div>
+      </section>
+
+      <section className={styles.section}>
+        <h2>Reply</h2>
+        <ReplyBox
+          recipient="Alex"
+          defaultValue="Sounds good. I'll send the notes after the meeting."
+          placeholder="Write a reply"
+          onSend={setSentReply}
+        />
+        {sentReply != null ? (
+          <p className={styles.sent}>Sent: {sentReply}</p>
+        ) : null}
       </section>
     </main>
   )

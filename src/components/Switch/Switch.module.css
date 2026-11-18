@@ -32,7 +32,7 @@
   width: var(--space-3xl);
   height: var(--space-xl);
   padding: 2px;
-  border-radius: var(--radius-default);
+  border-radius: var(--radius-full);
   background: var(--color-control);
   transition: background-color 150ms ease;
 }
@@ -42,7 +42,7 @@
   place-items: center;
   width: calc(var(--space-xl) - 4px);
   height: calc(var(--space-xl) - 4px);
-  border-radius: var(--radius-default);
+  border-radius: var(--radius-full);
   background: var(--color-bg-raised);
   color: var(--color-text-muted);
   transition:

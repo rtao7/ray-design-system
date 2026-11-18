@@ -67,3 +67,11 @@ h2 {
   font-size: 0.75rem;
   color: var(--color-text-muted);
 }
+
+.sent {
+  margin: 0;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
