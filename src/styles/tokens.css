@@ -2,6 +2,7 @@
   Two layers. Primitives name the raw value. Semantic names describe the role.
   Components only read the semantic names. Light mode lives on :root.
   Dark mode, later, reassigns those same semantic names.
+  prefers-reduced-motion collapses the semantic durations.
 */
 
 :root {
@@ -13,10 +14,20 @@
   --stone-300: oklch(0.84 0.02 80);
   --stone-400: oklch(0.72 0.022 70);
   --stone-500: oklch(0.58 0.02 62);
+  --stone-600: oklch(0.49 0.02 58);
   --stone-700: oklch(0.4 0.02 55);
+  --stone-800: oklch(0.335 0.02 53);
   --stone-900: oklch(0.27 0.02 52);
 
-  /* Primitive: ink gray */
+  /* Primitive: ink gray. Lighter steps meet the existing ink at 700. */
+  --gray-0: oklch(0.99 0 0);
+  --gray-50: oklch(0.96 0 0);
+  --gray-100: oklch(0.93 0 0);
+  --gray-200: oklch(0.88 0 0);
+  --gray-300: oklch(0.79 0 0);
+  --gray-400: oklch(0.64 0 0);
+  --gray-500: oklch(0.47 0 0);
+  --gray-600: oklch(0.35 0 0);
   --gray-700: oklch(0.24 0 0);
   --gray-800: oklch(0.2 0 0);
   --gray-900: oklch(0.16 0 0);
@@ -49,6 +60,38 @@
 
   --border-1: 1px;
 
+  /* Primitive: motion */
+  --time-150: 150ms;
+  --time-280: 280ms;
+  --time-360: 360ms;
+  --time-500: 500ms;
+  --time-700: 700ms;
+
+  --curve-linear: linear;
+  --curve-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --curve-out: cubic-bezier(0, 0, 0.58, 1);
+  --curve-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --curve-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --curve-spring: linear(
+    0,
+    0.006,
+    0.025 2.2%,
+    0.101 4.6%,
+    0.539 15.5%,
+    0.721 21%,
+    0.849 26.5%,
+    0.937 32.3%,
+    0.968 35.6%,
+    0.989 39.1%,
+    1.001 42.8%,
+    1.006 46.8%,
+    1.007 51.1%,
+    1.005 55.7%,
+    1.002 61%,
+    1 72.6%,
+    1
+  );
+
   /* Semantic: color */
   --color-bg: var(--stone-50);
   --color-bg-raised: var(--stone-0);
@@ -72,9 +115,10 @@
   --font-size-lg: var(--text-lg);
   --font-weight-label: var(--weight-medium);
 
+  /* One name per primitive step, from 0 through 2.5rem. */
   --space-none: var(--space-0);
   --space-2xs: var(--space-1);
-  --space-xs: var(--space-1);
+  --space-xs: var(--space-2);
   --space-sm: var(--space-3);
   --space-md: var(--space-4);
   --space-lg: var(--space-5);
@@ -82,9 +126,36 @@
   --space-2xl: var(--space-8);
   --space-3xl: var(--space-10);
 
+  --radius-control: var(--radius-md);
+  --radius-surface: var(--radius-lg);
+  --radius-pill: var(--radius-full);
+
+  --duration-fast: var(--time-150);
+  --duration-base: var(--time-280);
+  --duration-slow: var(--time-360);
+  --duration-slower: var(--time-500);
+  --duration-loop: var(--time-700);
+
+  --ease-linear: var(--curve-linear);
+  --ease-standard: var(--curve-standard);
+  --ease-out: var(--curve-out);
+  --ease-in-out: var(--curve-in-out);
+  --ease-decelerate: var(--curve-decelerate);
+  --ease-spring: var(--curve-spring);
+
   --border-default: var(--border-1);
 
   --shadow-border:
     0 0 0 0.5px var(--color-border), 0 2px 2px -1px oklch(0 0 0 / 0.12),
     0 4px 4px -4px oklch(0 0 0 / 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --duration-slower: 0ms;
+    --duration-loop: 0ms;
+  }
 }

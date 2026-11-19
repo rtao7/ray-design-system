@@ -23,6 +23,17 @@ export type ReplyBoxProps = {
 
 const sendDelay = 700;
 
+function readMotion(name: string) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function readMotionMs(name: string) {
+  const raw = readMotion(name);
+  if (raw.endsWith("ms")) return Number.parseFloat(raw);
+  if (raw.endsWith("s")) return Number.parseFloat(raw) * 1000;
+  return 0;
+}
+
 function isEditorEmpty(root: HTMLElement) {
   return (root.textContent ?? "").replace(/\u00a0/g, " ").trim() === "";
 }
@@ -164,8 +175,8 @@ export function ReplyBox({
     const animation = box.animate(
       [{ height: `${from}px` }, { height: `${to}px` }],
       {
-        duration: 360,
-        easing: "cubic-bezier(0, 0, 0.2, 1)",
+        duration: readMotionMs("--duration-slow"),
+        easing: readMotion("--ease-decelerate"),
         fill: "forwards",
       },
     );
