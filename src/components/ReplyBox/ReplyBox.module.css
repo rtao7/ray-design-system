@@ -65,8 +65,10 @@
 
 .recipient {
   margin: 0;
-  font-size: var(--font-size-sm);
-  line-height: 1.4;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-caption);
+  line-height: var(--font-leading-caption);
+  letter-spacing: var(--font-tracking-caption);
   color: var(--color-text-muted);
 }
 
@@ -78,8 +80,10 @@
 .editor {
   position: relative;
   min-height: 1.5em;
-  font-size: var(--font-size-md);
-  line-height: 1.5;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  line-height: var(--font-leading-body);
+  letter-spacing: var(--font-tracking-body);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   cursor: text;
@@ -115,8 +119,8 @@
 }
 
 .action > span {
-  width: var(--font-size-md);
-  height: var(--font-size-md);
+  width: var(--font-size-label);
+  height: var(--font-size-label);
 }
 
 .action:disabled,
@@ -166,8 +170,10 @@
 
 .sentMessage {
   margin: 0;
-  font-size: var(--font-size-sm);
-  line-height: 1.4;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-caption);
+  line-height: var(--font-leading-caption);
+  letter-spacing: var(--font-tracking-caption);
   color: var(--color-text-muted);
 }
 

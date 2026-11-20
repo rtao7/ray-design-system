@@ -15,9 +15,10 @@
 
 .kicker {
   margin: 0;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-caption);
   font-weight: var(--font-weight-label);
-  letter-spacing: 0.04em;
+  line-height: var(--font-leading-caption);
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
@@ -25,16 +26,20 @@
 h1,
 h2 {
   margin: 0;
-  font-weight: var(--font-weight-label);
 }
 
 h1 {
-  font-size: 2rem;
-  line-height: 1.1;
+  font-size: var(--font-size-heading-lg);
+  font-weight: var(--font-weight-heading-lg);
+  line-height: var(--font-leading-heading-lg);
+  letter-spacing: var(--font-tracking-heading-lg);
 }
 
 h2 {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-heading-sm);
+  font-weight: var(--font-weight-heading-sm);
+  line-height: var(--font-leading-heading-sm);
+  letter-spacing: var(--font-tracking-heading-sm);
 }
 
 .lede {
@@ -63,7 +68,61 @@ h2 {
 }
 
 .token {
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
-  font-size: 0.75rem;
+  font-family: var(--font-code);
+  font-size: var(--font-size-code);
+  font-weight: var(--font-weight-code);
+  line-height: var(--font-leading-code);
+  letter-spacing: var(--font-tracking-code);
   color: var(--color-text-muted);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.ramp {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+
+.ramp[data-step="4xl"] {
+  font-size: var(--text-4xl);
+}
+
+.ramp[data-step="3xl"] {
+  font-size: var(--text-3xl);
+}
+
+.ramp[data-step="2xl"] {
+  font-size: var(--text-2xl);
+}
+
+.ramp[data-step="xl"] {
+  font-size: var(--text-xl);
+}
+
+.ramp[data-step="lg"] {
+  font-size: var(--text-lg);
+}
+
+.ramp[data-step="md"] {
+  font-size: var(--text-md);
+}
+
+.ramp[data-step="sm"] {
+  font-size: var(--text-sm);
+}
+
+.ramp[data-step="xs"] {
+  font-size: var(--text-xs);
+}
+
+.ramp[data-step="2xs"] {
+  font-size: var(--text-2xs);
 }
