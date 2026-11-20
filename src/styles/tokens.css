@@ -34,14 +34,40 @@
   --black-a12: oklch(0 0 0 / 0.12);
   --black-a24: oklch(0 0 0 / 0.24);
 
-  /* Primitive: type, space, radius */
+  /* Primitive: type.
+     Sizes are a minor third: each step is 1.2× the one below, base 1rem.
+     --text-sm is that base. Earlier sizes map to the nearest step:
+     0.75rem → --text-2xs, 0.875rem → --text-xs, 1rem → --text-sm, 2rem → --text-2xl.
+     Weights are the Geist static weights. */
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --text-sm: 0.75rem;
-  --text-md: 0.875rem;
-  --text-lg: 1rem;
-  --weight-medium: 500;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
-  /* Spaces */
+  --text-2xs: 0.6944rem; /* 1.2^-2 */
+  --text-xs: 0.8333rem; /* 1.2^-1 */
+  --text-sm: 1rem; /* 1.2^0 */
+  --text-md: 1.2rem; /* 1.2^1 */
+  --text-lg: 1.44rem; /* 1.2^2 */
+  --text-xl: 1.728rem; /* 1.2^3 */
+  --text-2xl: 2.0736rem; /* 1.2^4 */
+  --text-3xl: 2.4883rem; /* 1.2^5 */
+  --text-4xl: 2.986rem; /* 1.2^6 */
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.4;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  --tracking-tighter: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.04em;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Primitive: space, radius */
   --space-0: 0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -108,12 +134,61 @@
   --color-control-hover: var(--stone-500);
   --color-focus: var(--color-accent);
 
-  /* Semantic: type, space, radius */
+  /* Semantic: type.
+     A text style is size, leading, tracking, and weight.
+     Larger styles use tighter leading and tracking. */
   --font-ui: var(--font-sans);
-  --font-size-sm: var(--text-sm);
-  --font-size-md: var(--text-md);
-  --font-size-lg: var(--text-lg);
+  --font-code: var(--font-mono);
+
+  --font-size-display: var(--text-4xl);
+  --font-leading-display: var(--leading-tight);
+  --font-tracking-display: var(--tracking-tighter);
+  --font-weight-display: var(--weight-semibold);
+
+  --font-size-heading-lg: var(--text-2xl);
+  --font-leading-heading-lg: var(--leading-tight);
+  --font-tracking-heading-lg: var(--tracking-tight);
+  --font-weight-heading-lg: var(--weight-medium);
+
+  --font-size-heading-md: var(--text-lg);
+  --font-leading-heading-md: var(--leading-snug);
+  --font-tracking-heading-md: var(--tracking-tight);
+  --font-weight-heading-md: var(--weight-medium);
+
+  --font-size-heading-sm: var(--text-sm);
+  --font-leading-heading-sm: var(--leading-snug);
+  --font-tracking-heading-sm: var(--tracking-normal);
+  --font-weight-heading-sm: var(--weight-medium);
+
+  --font-size-body-lg: var(--text-md);
+  --font-leading-body-lg: var(--leading-normal);
+  --font-tracking-body-lg: var(--tracking-normal);
+  --font-weight-body-lg: var(--weight-regular);
+
+  --font-size-body: var(--text-xs);
+  --font-leading-body: var(--leading-normal);
+  --font-tracking-body: var(--tracking-normal);
+  --font-weight-body: var(--weight-regular);
+
+  --font-size-body-sm: var(--text-2xs);
+  --font-leading-body-sm: var(--leading-normal);
+  --font-tracking-body-sm: var(--tracking-normal);
+  --font-weight-body-sm: var(--weight-regular);
+
+  --font-size-label: var(--text-xs);
+  --font-leading-label: var(--leading-snug);
+  --font-tracking-label: var(--tracking-normal);
   --font-weight-label: var(--weight-medium);
+
+  --font-size-caption: var(--text-2xs);
+  --font-leading-caption: var(--leading-snug);
+  --font-tracking-caption: var(--tracking-normal);
+  --font-weight-caption: var(--weight-regular);
+
+  --font-size-code: var(--text-2xs);
+  --font-leading-code: var(--leading-normal);
+  --font-tracking-code: var(--tracking-normal);
+  --font-weight-code: var(--weight-regular);
 
   /* One name per primitive step, from 0 through 2.5rem. */
   --space-none: var(--space-0);

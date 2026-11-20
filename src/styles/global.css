@@ -1,7 +1,9 @@
 body {
   font-family: var(--font-ui);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  line-height: var(--font-leading-body);
+  letter-spacing: var(--font-tracking-body);
   background: var(--color-bg);
   color: var(--color-text);
-  line-height: 1.5;
 }
