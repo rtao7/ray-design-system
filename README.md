@@ -20,7 +20,7 @@ npm run dev
 flowchart TD
   primitive[Primitive tokens]
   semantic[Semantic tokens]
-  components[Button Switch ReplyBox]
+  components[Button Switch ReplyBox ChatComposer]
   catalog[Catalog in App]
   later[Other projects import the package]
   primitive --> semantic
@@ -39,7 +39,7 @@ Primitives name the value. Semantic tokens name the role and point at a primitiv
 - **Radius.** Primitives are `--radius-none`, `--radius-sm`, `--radius-md`, `--radius-lg`, and `--radius-full`. Components use `--radius-control` for compact controls, `--radius-surface` for panels such as the reply box, and `--radius-pill` for buttons and switches.
 - **Motion.** Primitive durations are `--time-150`, `--time-280`, `--time-360`, `--time-500`, and `--time-700`. Primitive curves are `--curve-linear`, `--curve-standard` (the CSS `ease` keyword), `--curve-out`, `--curve-in-out`, `--curve-decelerate`, and `--curve-spring` (a `linear()` spring). Semantic durations are `--duration-fast`, `--duration-base`, `--duration-slow`, `--duration-slower`, and `--duration-loop`. Semantic curves are `--ease-linear`, `--ease-standard`, `--ease-out`, `--ease-in-out`, `--ease-decelerate`, and `--ease-spring`. `prefers-reduced-motion: reduce` sets the semantic durations to `0ms`.
 
-[`src/styles/reset.css`](src/styles/reset.css) and [`src/styles/global.css`](src/styles/global.css) are the base element styles. Components live in `src/components`, one folder each for Button, Switch, and ReplyBox. The catalog is [`src/App.tsx`](src/App.tsx).
+[`src/styles/reset.css`](src/styles/reset.css) and [`src/styles/global.css`](src/styles/global.css) are the base element styles. Components live in `src/components`, one folder each for Button, Switch, ReplyBox, and ChatComposer. The catalog is [`src/App.tsx`](src/App.tsx).
 
 ## Use ray-ui in another project
 
@@ -59,7 +59,7 @@ Load the tokens once, near the root of the app, and import the components you ne
 
 ```tsx
 import "ray-ui/tokens.css";
-import { Button, ReplyBox, Switch } from "ray-ui";
+import { Button, ChatComposer, ReplyBox, Switch } from "ray-ui";
 ```
 
 React and React DOM are peer dependencies. The host app supplies them.

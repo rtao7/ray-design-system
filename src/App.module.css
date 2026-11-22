@@ -67,3 +67,27 @@ h2 {
   font-size: 0.75rem;
   color: var(--color-text-muted);
 }
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.message {
+  max-width: 100%;
+  margin: 0;
+  padding: var(--space-xs) var(--space-sm);
+  border: var(--border-default) solid var(--color-border);
+  border-radius: var(--radius-surface);
+  background: var(--color-bg-raised);
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

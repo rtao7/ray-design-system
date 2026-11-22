@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from './components/Button/index.ts'
+import { ChatComposer } from './components/ChatComposer/index.ts'
 import { ReplyBox } from './components/ReplyBox/index.ts'
 import { Switch } from './components/Switch/index.ts'
 import styles from './App.module.css'
@@ -49,6 +50,7 @@ function CloseIcon() {
 
 export default function App() {
   const [saved, setSaved] = useState(false)
+  const [messages, setMessages] = useState<{ id: number; text: string }[]>([])
 
   return (
     <main className={styles.page}>
@@ -127,6 +129,24 @@ export default function App() {
           recipient="Alex"
           defaultValue="Sounds good. I'll send the notes after the meeting."
           placeholder="Write a reply"
+        />
+      </section>
+
+      <section className={styles.section}>
+        <h2>Chat</h2>
+        {messages.length > 0 ? (
+          <ol className={styles.messages} aria-live="polite" aria-label="Sent messages">
+            {messages.map((message) => (
+              <li key={message.id} className={styles.message}>
+                {message.text}
+              </li>
+            ))}
+          </ol>
+        ) : null}
+        <ChatComposer
+          onSend={(text) => {
+            setMessages((current) => [...current, { id: current.length + 1, text }])
+          }}
         />
       </section>
     </main>
