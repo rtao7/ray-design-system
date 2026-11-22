@@ -5,24 +5,31 @@
   width: 100%;
   margin: 0;
   padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-sm);
-  border: var(--border-default) solid var(--color-border);
+  border: var(--border-default) solid var(--color-border-neutral);
   border-radius: var(--radius-surface);
   background: var(--color-bg-raised);
   font-family: var(--font-ui);
   color: var(--color-text);
-  transition: background-color var(--duration-fast) var(--ease-standard);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    outline-color var(--duration-fast) var(--ease-standard);
 }
 
 .composer:hover:not(:focus-within) {
+  border-color: var(--color-border-neutral-hover);
   background: var(--color-quiet-hover);
 }
 
 .composer[aria-disabled="true"]:hover {
+  border-color: var(--color-border-neutral);
   background: var(--color-bg-raised);
 }
 
 .composer:has(.field:focus-visible) {
-  outline: 2px solid var(--color-focus);
+  outline-color: var(--color-focus-neutral);
 }
 
 .field {
@@ -32,7 +39,8 @@
   min-width: 0;
   margin: 0;
   padding: var(--space-xs) 0;
-  border: none;
+  border: 0;
+  box-shadow: none;
   resize: none;
   appearance: none;
   background: transparent;

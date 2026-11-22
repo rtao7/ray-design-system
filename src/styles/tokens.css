@@ -34,6 +34,11 @@
   --black-a12: oklch(0 0 0 / 0.12);
   --black-a24: oklch(0 0 0 / 0.24);
 
+  /* Primitive: neutral hairlines. Between gray-100 and gray-300. */
+  --neutral-200: oklch(0.882 0 0);
+  --neutral-300: oklch(0.82 0 0);
+  --neutral-400: oklch(0.757 0 0);
+
   /* Primitive: type, space, radius */
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --text-sm: 0.75rem;
@@ -103,6 +108,9 @@
   --color-on-accent: var(--stone-0);
   --color-border: var(--black-a12);
   --color-border-strong: var(--black-a24);
+  --color-border-neutral: var(--neutral-200);
+  --color-border-neutral-hover: var(--neutral-300);
+  --color-focus-neutral: var(--neutral-400);
   --color-quiet-hover: var(--stone-100);
   --color-control: var(--stone-400);
   --color-control-hover: var(--stone-500);
