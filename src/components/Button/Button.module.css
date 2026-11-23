@@ -7,11 +7,12 @@
   border: none;
   border-radius: var(--radius-pill);
   font-family: var(--font-ui);
+  font-size: var(--font-size-label);
   font-weight: var(--font-weight-label);
+  letter-spacing: var(--font-tracking-label);
   line-height: 1;
   cursor: pointer;
   padding: var(--space-sm) var(--space-lg);
-  font-size: var(--font-size-md);
 }
 
 .iconOnly {

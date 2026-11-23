@@ -46,10 +46,16 @@
   background: transparent;
   color: inherit;
   font: inherit;
-  font-size: var(--font-size-md);
-  line-height: 1.5;
-  min-height: calc(var(--font-size-md) * 1.5 + var(--space-xs) * 2);
-  max-height: calc(var(--font-size-md) * 1.5 * 8 + var(--space-xs) * 2);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  line-height: var(--font-leading-body);
+  letter-spacing: var(--font-tracking-body);
+  min-height: calc(
+    var(--font-size-body) * var(--font-leading-body) + var(--space-xs) * 2
+  );
+  max-height: calc(
+    var(--font-size-body) * var(--font-leading-body) * 8 + var(--space-xs) * 2
+  );
   overflow-x: hidden;
   overflow-y: hidden;
   overflow-wrap: anywhere;
@@ -77,8 +83,8 @@
 }
 
 .send > span {
-  width: var(--font-size-md);
-  height: var(--font-size-md);
+  width: var(--font-size-label);
+  height: var(--font-size-label);
 }
 
 .send:disabled,

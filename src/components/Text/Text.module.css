@@ -1,0 +1,80 @@
+.text {
+  margin: 0;
+  font-family: var(--font-ui);
+  color: var(--color-text);
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.display {
+  font-size: var(--font-size-display);
+  line-height: var(--font-leading-display);
+  letter-spacing: var(--font-tracking-display);
+  font-weight: var(--font-weight-display);
+}
+
+.headingLg {
+  font-size: var(--font-size-heading-lg);
+  line-height: var(--font-leading-heading-lg);
+  letter-spacing: var(--font-tracking-heading-lg);
+  font-weight: var(--font-weight-heading-lg);
+}
+
+.headingMd {
+  font-size: var(--font-size-heading-md);
+  line-height: var(--font-leading-heading-md);
+  letter-spacing: var(--font-tracking-heading-md);
+  font-weight: var(--font-weight-heading-md);
+}
+
+.headingSm {
+  font-size: var(--font-size-heading-sm);
+  line-height: var(--font-leading-heading-sm);
+  letter-spacing: var(--font-tracking-heading-sm);
+  font-weight: var(--font-weight-heading-sm);
+}
+
+.bodyLg {
+  font-size: var(--font-size-body-lg);
+  line-height: var(--font-leading-body-lg);
+  letter-spacing: var(--font-tracking-body-lg);
+  font-weight: var(--font-weight-body-lg);
+}
+
+.body {
+  font-size: var(--font-size-body);
+  line-height: var(--font-leading-body);
+  letter-spacing: var(--font-tracking-body);
+  font-weight: var(--font-weight-body);
+}
+
+.bodySm {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--font-leading-body-sm);
+  letter-spacing: var(--font-tracking-body-sm);
+  font-weight: var(--font-weight-body-sm);
+}
+
+.label {
+  font-size: var(--font-size-label);
+  line-height: var(--font-leading-label);
+  letter-spacing: var(--font-tracking-label);
+  font-weight: var(--font-weight-label);
+}
+
+.caption {
+  font-size: var(--font-size-caption);
+  line-height: var(--font-leading-caption);
+  letter-spacing: var(--font-tracking-caption);
+  font-weight: var(--font-weight-caption);
+}
+
+.code {
+  font-family: var(--font-code);
+  font-size: var(--font-size-code);
+  line-height: var(--font-leading-code);
+  letter-spacing: var(--font-tracking-code);
+  font-weight: var(--font-weight-code);
+}
