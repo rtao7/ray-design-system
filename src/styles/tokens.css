@@ -31,7 +31,9 @@
   --gray-700: oklch(0.24 0 0);
   --gray-800: oklch(0.2 0 0);
   --gray-900: oklch(0.16 0 0);
+  --black-a0: oklch(0 0 0 / 0);
   --black-a12: oklch(0 0 0 / 0.12);
+  --black-a16: oklch(0 0 0 / 0.16);
   --black-a24: oklch(0 0 0 / 0.24);
 
   /* Primitive: neutral hairlines. Between gray-100 and gray-300. */
@@ -138,6 +140,7 @@
   --color-border-neutral-hover: var(--neutral-300);
   --color-focus-neutral: var(--neutral-400);
   --color-quiet-hover: var(--stone-100);
+  --color-quiet-active: var(--stone-200);
   --color-control: var(--stone-400);
   --color-control-hover: var(--stone-500);
   --color-focus: var(--color-accent);
@@ -209,6 +212,15 @@
   --space-2xl: var(--space-8);
   --space-3xl: var(--space-10);
 
+  /* Card padding. Default block is 16px and default inline is 12px.
+     sm and lg step around that pair. none uses --space-none. */
+  --space-card-block-sm: var(--space-3);
+  --space-card-inline-sm: var(--space-2);
+  --space-card-block: var(--space-4);
+  --space-card-inline: var(--space-3);
+  --space-card-block-lg: var(--space-6);
+  --space-card-inline-lg: var(--space-4);
+
   --radius-control: var(--radius-md);
   --radius-surface: var(--radius-lg);
   --radius-pill: var(--radius-full);
@@ -228,9 +240,44 @@
 
   --border-default: var(--border-1);
 
-  --shadow-border:
-    0 0 0 0.5px var(--color-border), 0 2px 2px -1px oklch(0 0 0 / 0.12),
-    0 4px 4px -4px oklch(0 0 0 / 0.12);
+  /* Semantic: shadow.
+     A surface edge is a box-shadow, not a CSS border. A border is part
+     of the box, so adding or removing it would change the size and shift
+     content off the card's 12px inline / 16px block padding. A ring does
+     not, across variants and states. The hairline and the lift are layers
+     of one box-shadow. Lists stay the same length. --shadow-flat stands
+     in when a state has no lift, so the property can transition. The
+     ring is 0.5px, follows the radius, and uses translucent --color-border,
+     so it blends on the corner. A theme reassigns these names.
+     --shadow-border is unchanged in paint: ring, then two --black-a12
+     contact layers. */
+  --shadow-ring: 0 0 0 0.5px var(--color-border);
+  --shadow-ring-strong: 0 0 0 0.5px var(--color-border-strong);
+  --shadow-flat: 0 0 0 0 var(--black-a0);
+  --shadow-contact: 0 2px 2px -1px var(--black-a12);
+  --shadow-contact-soft: 0 4px 4px -4px var(--black-a12);
+  --shadow-lift-soft: 0 8px 16px -8px var(--black-a12);
+  --shadow-lift: 0 12px 24px -10px var(--black-a16);
+  --shadow-lift-strong: 0 18px 36px -12px var(--black-a16);
+
+  --shadow-border: var(--shadow-ring), var(--shadow-contact), var(--shadow-contact-soft);
+
+  --shadow-card: var(--shadow-border), var(--shadow-flat);
+  --shadow-card-hover: var(--shadow-border), var(--shadow-lift-soft);
+  --shadow-card-active: var(--shadow-card);
+
+  --shadow-card-outline:
+    var(--shadow-ring), var(--shadow-flat), var(--shadow-flat), var(--shadow-flat);
+  --shadow-card-outline-hover:
+    var(--shadow-ring-strong), var(--shadow-contact), var(--shadow-flat),
+    var(--shadow-flat);
+  --shadow-card-outline-active:
+    var(--shadow-ring-strong), var(--shadow-flat), var(--shadow-flat),
+    var(--shadow-flat);
+
+  --shadow-card-elevated: var(--shadow-border), var(--shadow-lift);
+  --shadow-card-elevated-hover: var(--shadow-border), var(--shadow-lift-strong);
+  --shadow-card-elevated-active: var(--shadow-card);
 }
 
 @media (prefers-reduced-motion: reduce) {

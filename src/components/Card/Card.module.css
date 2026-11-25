@@ -1,0 +1,185 @@
+.card {
+  --card-pad-block: var(--space-card-block);
+  --card-pad-inline: var(--space-card-inline);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding-block: var(--card-pad-block);
+  padding-inline: var(--card-pad-inline);
+  /* Clears the user-agent button border. The visible edge is the
+     box-shadow in tokens.css, so a div, a link, and a button share the
+     same padding and the content does not shift between them. */
+  border: none;
+  border-radius: var(--radius-surface);
+  background: transparent;
+  box-shadow: none;
+  appearance: none;
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  line-height: var(--font-leading-body);
+  letter-spacing: var(--font-tracking-body);
+  text-align: start;
+  text-decoration: none;
+  /* Equal-length shadow lists interpolate. --duration-fast is 0ms
+     when reduced motion is requested, so the state changes with no tween. */
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.card:any-link {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.card:focus {
+  outline: none;
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.padNone {
+  --card-pad-block: var(--space-none);
+  --card-pad-inline: var(--space-none);
+}
+
+.padSm {
+  --card-pad-block: var(--space-card-block-sm);
+  --card-pad-inline: var(--space-card-inline-sm);
+}
+
+.padMd {
+  --card-pad-block: var(--space-card-block);
+  --card-pad-inline: var(--space-card-inline);
+}
+
+.padLg {
+  --card-pad-block: var(--space-card-block-lg);
+  --card-pad-inline: var(--space-card-inline-lg);
+}
+
+.surface {
+  background-color: var(--color-bg-raised);
+  box-shadow: var(--shadow-card);
+}
+
+.outline {
+  background-color: transparent;
+  box-shadow: var(--shadow-card-outline);
+}
+
+.elevated {
+  background-color: var(--color-bg-raised);
+  box-shadow: var(--shadow-card-elevated);
+}
+
+.ghost {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:disabled,
+.interactive[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.surface.interactive:hover:not(:disabled):not([aria-disabled="true"]) {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.surface.interactive:active:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--color-quiet-hover);
+  box-shadow: var(--shadow-card-active);
+}
+
+.outline.interactive:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--color-quiet-hover);
+  box-shadow: var(--shadow-card-outline-hover);
+}
+
+.outline.interactive:active:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--color-quiet-active);
+  box-shadow: var(--shadow-card-outline-active);
+}
+
+.elevated.interactive:hover:not(:disabled):not([aria-disabled="true"]) {
+  box-shadow: var(--shadow-card-elevated-hover);
+}
+
+.elevated.interactive:active:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--color-quiet-hover);
+  box-shadow: var(--shadow-card-elevated-active);
+}
+
+.ghost.interactive:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--color-quiet-hover);
+}
+
+.ghost.interactive:active:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--color-quiet-active);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  margin-top: auto;
+}
+
+.media {
+  flex: none;
+  align-self: stretch;
+  width: calc(100% + 2 * var(--card-pad-inline));
+  min-width: 0;
+  max-width: none;
+  margin-inline: calc(var(--card-pad-inline) * -1);
+  overflow: hidden;
+}
+
+.media:first-child {
+  margin-block-start: calc(var(--card-pad-block) * -1);
+  border-top-left-radius: var(--radius-surface);
+  border-top-right-radius: var(--radius-surface);
+}
+
+.media:last-child {
+  margin-block-end: calc(var(--card-pad-block) * -1);
+  border-bottom-left-radius: var(--radius-surface);
+  border-bottom-right-radius: var(--radius-surface);
+}
+
+.media img,
+.media svg,
+.media video,
+.media picture {
+  display: block;
+  width: 100%;
+  height: auto;
+}

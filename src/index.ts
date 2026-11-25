@@ -8,3 +8,16 @@ export { ChatComposer } from './components/ChatComposer/index.ts'
 export type { ChatComposerProps } from './components/ChatComposer/index.ts'
 export { Text } from './components/Text/index.ts'
 export type { TextProps, TextTone, TextVariant } from './components/Text/index.ts'
+export {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  CardMedia,
+} from './components/Card/index.ts'
+export type {
+  CardPadding,
+  CardProps,
+  CardSlotProps,
+  CardVariant,
+} from './components/Card/index.ts'

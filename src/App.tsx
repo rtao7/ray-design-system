@@ -1,5 +1,12 @@
 import { useState } from 'react'
 import { Button } from './components/Button/index.ts'
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  CardMedia,
+} from './components/Card/index.ts'
 import { ChatComposer } from './components/ChatComposer/index.ts'
 import { ReplyBox } from './components/ReplyBox/index.ts'
 import { Switch } from './components/Switch/index.ts'
@@ -87,8 +94,30 @@ function CloseIcon() {
   )
 }
 
+function StudyArt() {
+  return (
+    <svg viewBox="0 0 320 180" role="img" aria-label="Ink circle on warm stone">
+      <rect width="320" height="180" fill="var(--color-quiet-hover)" />
+      <circle cx="214" cy="74" r="48" fill="var(--color-bg-raised)" />
+      <circle cx="214" cy="74" r="28" fill="var(--color-accent)" />
+      <rect x="28" y="126" width="112" height="6" rx="3" fill="var(--color-accent)" />
+      <rect
+        x="28"
+        y="142"
+        width="72"
+        height="4"
+        rx="2"
+        fill="var(--color-text-muted)"
+        opacity="0.65"
+      />
+    </svg>
+  )
+}
+
 export default function App() {
   const [saved, setSaved] = useState(false)
+  const [noted, setNoted] = useState(false)
+  const [pinned, setPinned] = useState(false)
   const [messages, setMessages] = useState<{ id: number; text: string }[]>([])
 
   return (
@@ -159,6 +188,218 @@ export default function App() {
             <Switch disabled>Disabled</Switch>
           </div>
           <Switch aria-label="Notifications" />
+        </div>
+      </section>
+
+      <section className={styles.section} id="cards">
+        <h2>Card</h2>
+        <p className={styles.lede}>
+          A surface with a shadow border, token padding, and link or button
+          states.
+        </p>
+
+        <div className={styles.subsection}>
+          <p className={styles.kicker}>Variants</p>
+          <div className={styles.cardGrid}>
+            <div className={styles.cardItem}>
+              <Card>
+                <CardHeader>
+                  <Text variant="caption" tone="muted">
+                    Field note
+                  </Text>
+                  <Text variant="heading-sm" as="h3">
+                    Warm stone, quiet ink
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <Text>
+                    A resting surface for the studies posted between projects.
+                    The edge is a shadow, so this 12 by 16 inset stays put.
+                  </Text>
+                </CardBody>
+                <CardFooter>
+                  <Text variant="caption" tone="muted">
+                    Surface
+                  </Text>
+                  <Button variant="outline" onClick={() => setNoted(true)}>
+                    {noted ? 'Saved' : 'Save'}
+                  </Button>
+                </CardFooter>
+              </Card>
+              <span className={styles.token}>--shadow-card</span>
+            </div>
+
+            <div className={styles.cardItem}>
+              <Card variant="outline">
+                <CardHeader>
+                  <Text variant="caption" tone="muted">
+                    Outline
+                  </Text>
+                  <Text variant="heading-sm" as="h3">
+                    Hairline only
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <Text tone="muted">
+                    The ring is the border. There is no lift until the card is
+                    a link or a button.
+                  </Text>
+                </CardBody>
+              </Card>
+              <span className={styles.token}>--shadow-card-outline</span>
+            </div>
+
+            <div className={styles.cardItem}>
+              <Card variant="elevated">
+                <CardMedia>
+                  <StudyArt />
+                </CardMedia>
+                <CardHeader>
+                  <Text variant="caption" tone="muted">
+                    Elevated
+                  </Text>
+                  <Text variant="heading-sm" as="h3">
+                    Afternoon study
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <Text tone="muted">
+                    Lifted off the page for a piece that should read first.
+                  </Text>
+                </CardBody>
+              </Card>
+              <span className={styles.token}>--shadow-card-elevated</span>
+            </div>
+
+            <div className={styles.cardItem}>
+              <Card variant="ghost">
+                <CardHeader>
+                  <Text variant="caption" tone="muted">
+                    Ghost
+                  </Text>
+                  <Text variant="heading-sm" as="h3">
+                    Quiet row
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <Text tone="muted">
+                    No fill and no ring. A link or button card fills on hover.
+                  </Text>
+                </CardBody>
+              </Card>
+              <span className={styles.token}>no shadow</span>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.subsection}>
+          <p className={styles.kicker}>Padding</p>
+          <div className={styles.cardStack}>
+            <div className={styles.cardItem}>
+              <Card padding="sm">
+                <Text variant="heading-sm" as="h3">
+                  Small
+                </Text>
+                <Text tone="muted">8px inline, 12px block.</Text>
+              </Card>
+              <span className={styles.token}>
+                --space-card-inline-sm · --space-card-block-sm
+              </span>
+            </div>
+            <div className={styles.cardItem}>
+              <Card padding="md">
+                <Text variant="heading-sm" as="h3">
+                  Default
+                </Text>
+                <Text tone="muted">12px inline, 16px block.</Text>
+              </Card>
+              <span className={styles.token}>
+                --space-card-inline · --space-card-block
+              </span>
+            </div>
+            <div className={styles.cardItem}>
+              <Card padding="lg">
+                <Text variant="heading-sm" as="h3">
+                  Large
+                </Text>
+                <Text tone="muted">16px inline, 24px block.</Text>
+              </Card>
+              <span className={styles.token}>
+                --space-card-inline-lg · --space-card-block-lg
+              </span>
+            </div>
+            <div className={styles.cardItem}>
+              <Card padding="none" variant="elevated">
+                <CardMedia>
+                  <StudyArt />
+                </CardMedia>
+              </Card>
+              <span className={styles.token}>none · --space-none</span>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.subsection}>
+          <p className={styles.kicker}>Interactive</p>
+          <div className={styles.cardStack}>
+            <div className={styles.cardItem}>
+              <Card as="a" href="#cards">
+                <CardHeader>
+                  <Text variant="caption" tone="muted">
+                    Link
+                  </Text>
+                  <Text variant="heading-sm" as="h3">
+                    Open the field note
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <Text tone="muted">
+                    The whole card is the link. Hover lifts the shadow. Tab to
+                    it for the focus outline.
+                  </Text>
+                </CardBody>
+                <CardFooter>
+                  <Text variant="caption" tone="muted">
+                    Hover, press, or tab
+                  </Text>
+                </CardFooter>
+              </Card>
+              <span className={styles.token}>as=&quot;a&quot; · --shadow-card-hover</span>
+            </div>
+            <div className={styles.cardItem}>
+              <Card
+                as="button"
+                variant="outline"
+                aria-pressed={pinned}
+                onClick={() => setPinned((current) => !current)}
+              >
+                <Text as="span" variant="caption" tone="muted">
+                  Button
+                </Text>
+                <Text as="span" variant="heading-sm">
+                  {pinned ? 'Pinned to the board' : 'Pin this study'}
+                </Text>
+                <Text as="span" tone="muted">
+                  The card is the button. type is button, so it does not submit
+                  a form.
+                </Text>
+              </Card>
+              <span className={styles.token}>
+                as=&quot;button&quot; · --shadow-card-outline-active
+              </span>
+            </div>
+            <div className={styles.cardItem}>
+              <Card as="button" variant="elevated" disabled>
+                <Text as="span" variant="heading-sm">
+                  Archived study
+                </Text>
+                <Text as="span" tone="muted">
+                  Disabled. It does not hover or press.
+                </Text>
+              </Card>
+              <span className={styles.token}>disabled</span>
+            </div>
+          </div>
         </div>
       </section>
 
