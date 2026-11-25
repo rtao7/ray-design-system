@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from './components/Button/index.ts'
+import { Card } from './components/Card/index.ts'
 import { ChatComposer } from './components/ChatComposer/index.ts'
 import { ReplyBox } from './components/ReplyBox/index.ts'
 import { Switch } from './components/Switch/index.ts'
@@ -87,8 +88,22 @@ function CloseIcon() {
   )
 }
 
+function StudyArt() {
+  return (
+    <svg viewBox="0 0 640 300" aria-hidden="true">
+      <rect width="640" height="300" fill="var(--color-quiet-hover)" />
+      <rect width="220" height="300" fill="var(--color-accent)" />
+      <circle cx="430" cy="118" r="58" fill="var(--color-surface)" />
+      <rect x="300" y="200" width="270" height="10" rx="5" fill="var(--color-border-strong)" />
+      <rect x="300" y="224" width="168" height="10" rx="5" fill="var(--color-border)" />
+    </svg>
+  )
+}
+
 export default function App() {
   const [saved, setSaved] = useState(false)
+  const [pinned, setPinned] = useState(false)
+  const [opened, setOpened] = useState(false)
   const [messages, setMessages] = useState<{ id: number; text: string }[]>([])
 
   return (
@@ -133,6 +148,131 @@ export default function App() {
           <Button icon={<PlusIcon />} aria-label="Add" />
           <Button variant="outline" icon={<PlusIcon />} aria-label="Add outline" />
           <Button variant="ghost" icon={<PlusIcon />} aria-label="Add ghost" />
+        </div>
+      </section>
+
+      <section className={styles.section} id="card">
+        <h2>Card</h2>
+        <div className={styles.cardGrid}>
+          <div className={styles.example}>
+            <Card>
+              <Card.Header>
+                <Text variant="heading-sm">Morning study</Text>
+              </Card.Header>
+              <Card.Body>
+                <Text>A hairline edge on a warm stone fill.</Text>
+              </Card.Body>
+            </Card>
+            <span className={styles.token}>outlined · --shadow-surface</span>
+          </div>
+          <div className={styles.example}>
+            <Card variant="elevated">
+              <Card.Header>
+                <Text variant="heading-sm">On the desk</Text>
+              </Card.Header>
+              <Card.Body>
+                <Text>Raised when a study should sit above the page.</Text>
+              </Card.Body>
+            </Card>
+            <span className={styles.token}>elevated · --shadow-raised</span>
+          </div>
+          <div className={styles.example}>
+            <Card variant="ghost">
+              <Card.Header>
+                <Text variant="heading-sm">Margin note</Text>
+              </Card.Header>
+              <Card.Body>
+                <Text>No fill and no shadow. It sits on the page.</Text>
+              </Card.Body>
+            </Card>
+            <span className={styles.token}>ghost</span>
+          </div>
+        </div>
+        <div className={styles.cardGrid}>
+          <div className={styles.example}>
+            <Card padding="sm">
+              <Text variant="heading-sm">Small</Text>
+            </Card>
+            <span className={styles.token}>padding sm · --space-sm</span>
+          </div>
+          <div className={styles.example}>
+            <Card padding="md">
+              <Text variant="heading-sm">Medium</Text>
+            </Card>
+            <span className={styles.token}>padding md · --space-md</span>
+          </div>
+          <div className={styles.example}>
+            <Card padding="lg">
+              <Text variant="heading-sm">Large</Text>
+            </Card>
+            <span className={styles.token}>padding lg · --space-xl</span>
+          </div>
+        </div>
+        <div className={styles.cardGrid}>
+          <div className={styles.example}>
+            <Card as="a" href="#card">
+              <Text variant="heading-sm">Open the archive</Text>
+              <Text>The whole surface is the link.</Text>
+            </Card>
+            <span className={styles.token}>as="a"</span>
+          </div>
+          <div className={styles.example}>
+            <Card
+              as="button"
+              aria-pressed={pinned}
+              onClick={() => setPinned((current) => !current)}
+            >
+              <Text as="span" variant="heading-sm">
+                {pinned ? 'Pinned to the wall' : 'Pin this study'}
+              </Text>
+              <Text as="span">
+                {pinned
+                  ? 'Saved on this page.'
+                  : 'The card is a button. Press it to pin the study.'}
+              </Text>
+            </Card>
+            <span className={styles.token}>as="button" · aria-pressed</span>
+          </div>
+          <div className={styles.example}>
+            <Card as="button" disabled>
+              <Text as="span" variant="heading-sm">
+                Closed draft
+              </Text>
+              <Text as="span">A disabled card stays quiet.</Text>
+            </Card>
+            <span className={styles.token}>disabled</span>
+          </div>
+        </div>
+        <div className={styles.example}>
+          <Card variant="elevated">
+            <Card.Media>
+              <StudyArt />
+            </Card.Media>
+            <Card.Header>
+              <Text variant="caption" tone="muted">
+                Every other day
+              </Text>
+              <Text variant="heading-sm">A study in stone and ink</Text>
+            </Card.Header>
+            <Card.Body>
+              <Text>
+                Warm paper, a quiet shadow, and type from the ramp. Made to
+                drop into a small experiment and still read clearly in a
+                screenshot.
+              </Text>
+            </Card.Body>
+            <Card.Footer>
+              <Text variant="caption" tone="muted">
+                Nov 25
+              </Text>
+              <Button variant="outline" onClick={() => setOpened(true)}>
+                {opened ? 'Opened' : 'Open'}
+              </Button>
+            </Card.Footer>
+          </Card>
+          <span className={styles.token}>
+            Header, Media, Body, Footer · --radius-surface
+          </span>
         </div>
       </section>
 

@@ -142,6 +142,13 @@
   --color-control-hover: var(--stone-500);
   --color-focus: var(--color-accent);
 
+  /* Semantic: surface.
+     A card or other panel reads these roles. Hover and active are a step
+     down the stone ramp so a future dark theme can reassign them. */
+  --color-surface: var(--color-bg-raised);
+  --color-surface-hover: var(--color-quiet-hover);
+  --color-surface-active: var(--stone-200);
+
   /* Semantic: type.
      A text style is size, leading, tracking, and weight.
      Larger styles use tighter leading and tracking. */
@@ -231,6 +238,13 @@
   --shadow-border:
     0 0 0 0.5px var(--color-border), 0 2px 2px -1px oklch(0 0 0 / 0.12),
     0 4px 4px -4px oklch(0 0 0 / 0.12);
+
+  /* Semantic: elevation. Short, raised, then overlay. */
+  --shadow-surface: 0 1px 2px var(--black-a12);
+  --shadow-raised:
+    0 1px 2px var(--black-a12), 0 8px 16px -2px var(--black-a24);
+  --shadow-overlay:
+    0 2px 6px var(--black-a12), 0 16px 28px -4px var(--black-a24);
 }
 
 @media (prefers-reduced-motion: reduce) {
