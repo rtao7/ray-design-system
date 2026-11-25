@@ -152,3 +152,21 @@ h2 {
 .ramp[data-step="2xs"] {
   font-size: var(--text-2xs);
 }
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md) var(--space-sm);
+  align-items: start;
+}
+
+.cardGrid .example {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 36rem) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}
