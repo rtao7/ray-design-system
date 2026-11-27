@@ -1,0 +1,172 @@
+/*
+  Roles. Each name points at a primitive with var().
+  Components read these names only. Light mode lives on :root.
+  Dark mode, later, reassigns these same names.
+  prefers-reduced-motion collapses the semantic durations.
+*/
+
+:root {
+  /* Semantic: color */
+  --color-bg: var(--stone-50);
+  --color-bg-raised: var(--stone-0);
+  --color-text: var(--stone-900);
+  --color-text-muted: var(--stone-500);
+  --color-accent: var(--gray-700);
+  --color-accent-hover: var(--gray-800);
+  --color-accent-active: var(--gray-900);
+  --color-on-accent: var(--stone-0);
+  --color-border: var(--black-a12);
+  --color-border-strong: var(--black-a24);
+  --color-border-neutral: var(--neutral-200);
+  --color-border-neutral-hover: var(--neutral-300);
+  --color-focus-neutral: var(--neutral-400);
+  --color-quiet-hover: var(--stone-100);
+  --color-quiet-active: var(--stone-200);
+  --color-control: var(--stone-400);
+  --color-control-hover: var(--stone-500);
+  --color-focus: var(--color-accent);
+
+  /* Semantic: type.
+     A text style is size, leading, tracking, and weight.
+     Larger styles use tighter leading and tracking. */
+  --font-ui: var(--font-sans);
+  --font-code: var(--font-mono);
+
+  --font-size-display: var(--text-4xl);
+  --font-leading-display: var(--leading-tight);
+  --font-tracking-display: var(--tracking-tighter);
+  --font-weight-display: var(--weight-semibold);
+
+  --font-size-heading-lg: var(--text-2xl);
+  --font-leading-heading-lg: var(--leading-tight);
+  --font-tracking-heading-lg: var(--tracking-tight);
+  --font-weight-heading-lg: var(--weight-medium);
+
+  --font-size-heading-md: var(--text-lg);
+  --font-leading-heading-md: var(--leading-snug);
+  --font-tracking-heading-md: var(--tracking-tight);
+  --font-weight-heading-md: var(--weight-medium);
+
+  --font-size-heading-sm: var(--text-sm);
+  --font-leading-heading-sm: var(--leading-snug);
+  --font-tracking-heading-sm: var(--tracking-normal);
+  --font-weight-heading-sm: var(--weight-medium);
+
+  --font-size-body-lg: var(--text-md);
+  --font-leading-body-lg: var(--leading-normal);
+  --font-tracking-body-lg: var(--tracking-normal);
+  --font-weight-body-lg: var(--weight-regular);
+
+  --font-size-body: var(--text-xs);
+  --font-leading-body: var(--leading-normal);
+  --font-tracking-body: var(--tracking-normal);
+  --font-weight-body: var(--weight-regular);
+
+  --font-size-body-sm: var(--text-2xs);
+  --font-leading-body-sm: var(--leading-normal);
+  --font-tracking-body-sm: var(--tracking-normal);
+  --font-weight-body-sm: var(--weight-regular);
+
+  --font-size-label: var(--text-xs);
+  --font-leading-label: var(--leading-snug);
+  --font-tracking-label: var(--tracking-normal);
+  --font-weight-label: var(--weight-medium);
+
+  --font-size-caption: var(--text-2xs);
+  --font-leading-caption: var(--leading-snug);
+  --font-tracking-caption: var(--tracking-normal);
+  --font-weight-caption: var(--weight-regular);
+
+  --font-size-code: var(--text-2xs);
+  --font-leading-code: var(--leading-normal);
+  --font-tracking-code: var(--tracking-normal);
+  --font-weight-code: var(--weight-regular);
+
+  /* One name per primitive step, from 0 through 2.5rem. */
+  --space-none: var(--space-0);
+  --space-2xs: var(--space-1);
+  --space-xs: var(--space-2);
+  --space-sm: var(--space-3);
+  --space-md: var(--space-4);
+  --space-lg: var(--space-5);
+  --space-xl: var(--space-6);
+  --space-2xl: var(--space-8);
+  --space-3xl: var(--space-10);
+
+  /* Card padding. Default block is 16px and default inline is 12px.
+     sm and lg step around that pair. none uses --space-none. */
+  --space-card-block-sm: var(--space-3);
+  --space-card-inline-sm: var(--space-2);
+  --space-card-block: var(--space-4);
+  --space-card-inline: var(--space-3);
+  --space-card-block-lg: var(--space-6);
+  --space-card-inline-lg: var(--space-4);
+
+  --radius-control: var(--radius-md);
+  --radius-surface: var(--radius-lg);
+  --radius-pill: var(--radius-full);
+
+  --duration-fast: var(--time-150);
+  --duration-base: var(--time-280);
+  --duration-slow: var(--time-360);
+  --duration-slower: var(--time-500);
+  --duration-loop: var(--time-700);
+
+  --ease-linear: var(--curve-linear);
+  --ease-standard: var(--curve-standard);
+  --ease-out: var(--curve-out);
+  --ease-in-out: var(--curve-in-out);
+  --ease-decelerate: var(--curve-decelerate);
+  --ease-spring: var(--curve-spring);
+
+  --border-default: var(--border-1);
+
+  /* Semantic: shadow.
+     A surface edge is a box-shadow, not a CSS border. A border is part
+     of the box, so adding or removing it would change the size and shift
+     content off the card's 12px inline / 16px block padding. A ring does
+     not, across variants and states. The hairline and the lift are layers
+     of one box-shadow. Lists stay the same length. --shadow-flat stands
+     in when a state has no lift, so the property can transition. The
+     ring is 0.5px, follows the radius, and uses translucent --color-border,
+     so it blends on the corner. A theme reassigns these names.
+     --shadow-border is unchanged in paint: ring, then two --black-a12
+     contact layers. */
+  --shadow-ring: 0 0 0 0.5px var(--color-border);
+  --shadow-ring-strong: 0 0 0 0.5px var(--color-border-strong);
+  --shadow-flat: 0 0 0 0 var(--black-a0);
+  --shadow-contact: 0 2px 2px -1px var(--black-a12);
+  --shadow-contact-soft: 0 4px 4px -4px var(--black-a12);
+  --shadow-lift-soft: 0 8px 16px -8px var(--black-a12);
+  --shadow-lift: 0 12px 24px -10px var(--black-a16);
+  --shadow-lift-strong: 0 18px 36px -12px var(--black-a16);
+
+  --shadow-border: var(--shadow-ring), var(--shadow-contact), var(--shadow-contact-soft);
+
+  --shadow-card: var(--shadow-border), var(--shadow-flat);
+  --shadow-card-hover: var(--shadow-border), var(--shadow-lift-soft);
+  --shadow-card-active: var(--shadow-card);
+
+  --shadow-card-outline:
+    var(--shadow-ring), var(--shadow-flat), var(--shadow-flat), var(--shadow-flat);
+  --shadow-card-outline-hover:
+    var(--shadow-ring-strong), var(--shadow-contact), var(--shadow-flat),
+    var(--shadow-flat);
+  --shadow-card-outline-active:
+    var(--shadow-ring-strong), var(--shadow-flat), var(--shadow-flat),
+    var(--shadow-flat);
+
+  --shadow-card-elevated: var(--shadow-border), var(--shadow-lift);
+  --shadow-card-elevated-hover: var(--shadow-border), var(--shadow-lift-strong);
+  --shadow-card-elevated-active: var(--shadow-card);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --duration-slower: 0ms;
+    --duration-loop: 0ms;
+  }
+}
