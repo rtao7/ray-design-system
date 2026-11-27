@@ -1,6 +1,6 @@
 # Ray
 
-Ray is a small React and TypeScript design system. This repo is both the component source and the catalog. Styling is CSS modules and CSS variables, so color, type, spacing, radius, motion, and shadow stay in one file.
+Ray is a small React and TypeScript design system. This repo is both the component source and the catalog. Styling is CSS modules and CSS variables. Primitive values and semantic roles live in separate stylesheets, and [`src/styles/tokens.css`](src/styles/tokens.css) imports both.
 
 ## Run
 
@@ -18,20 +18,38 @@ npm run dev
 
 ```mermaid
 flowchart TD
-  primitive[Primitive tokens]
-  semantic[Semantic tokens]
+  primitive[primitives.css]
+  semantic[semantic.css]
+  entry[tokens.css]
+  dark[Dark theme remaps roles]
   components[Button Switch ReplyBox ChatComposer Text Card]
   catalog[Catalog in App]
   later[Other projects import the package]
-  primitive --> semantic
-  semantic --> components
+  primitive --> entry
+  semantic --> entry
+  entry --> components
+  dark -.-> components
   components --> catalog
   components --> later
 ```
 
-CSS custom properties in [`src/styles/tokens.css`](src/styles/tokens.css) are the source of truth. The browser applies them directly. There is no token compiler.
+CSS custom properties are the source of truth. The browser applies them directly. There is no token compiler, so the same files load in the catalog, through the package exports, or in a host that assembles the layers itself.
 
-Primitives name the value. Semantic tokens name the role and point at a primitive with `var()`. Components read semantic tokens only. Light mode sets those roles on `:root`. Dark mode is not wired up yet. When it is, it reassigns the same semantic names and leaves the primitives alone.
+[`src/styles/primitives.css`](src/styles/primitives.css) holds the raw values. That is the stone, gray, neutral, and black alpha ramps; the type ramp, leading, tracking, and weight; the space and radius scales; the `1px` border; and the motion durations and curves. Shadow ink (`--black-a0`, `--black-a12`, `--black-a16`, `--black-a24`) lives here too. Themes leave this file alone.
+
+[`src/styles/semantic.css`](src/styles/semantic.css) holds the roles. Each role points at a primitive with `var()`. That includes surface, text, accent, border, and focus colors; text styles; semantic space, card padding, radius, and motion; and every shadow token from `--shadow-ring` through the card shadows. Those shadows are roles: `--shadow-ring` reads `--color-border`, and a theme reassigns the names. Light mode sets the roles on `:root`. `prefers-reduced-motion: reduce` is in this file and sets the semantic durations to `0ms`. The shadow-border rationale comment stays in this file with those roles.
+
+[`src/styles/tokens.css`](src/styles/tokens.css) is the single entry point. It imports `primitives.css`, then `semantic.css`, so every role resolves. The catalog imports this file. The package exports `./tokens.css` and `./styles/tokens.css`, and both point at it.
+
+Primitives name the value. Semantic tokens name the role. Components read semantic tokens only. A later dark theme is a third file that reassigns those same semantic names and leaves `primitives.css` alone. Load it after `tokens.css` (or after `semantic.css`, when the host imports the layers itself). Later declarations win, and Button, Switch, ReplyBox, ChatComposer, Text, and Card keep reading the same names.
+
+The package exports the stylesheets, so another project can take the whole set or the layers:
+
+- `ray-ui/tokens.css` and `ray-ui/styles/tokens.css` both load primitives, then semantic
+- `ray-ui/primitives.css` is the raw values
+- `ray-ui/semantic.css` is the light roles; import primitives first
+
+The names below are unchanged. Raw values are defined in `primitives.css`. Roles are defined in `semantic.css`.
 
 - **Color.** Stone is the warm neutral ramp and gray is the ink ramp. Both use the stops `0`, `50`, and `100` through `900`. Roles include `--color-bg`, `--color-bg-raised`, `--color-text`, `--color-accent`, `--color-border`, and `--color-control`. Quiet fills are `--color-quiet-hover` (`--stone-100`) and `--color-quiet-active` (`--stone-200`). Hairline borders use a shorter neutral scale, `--neutral-200` (`#D8D8D8`), `--neutral-300` (`#C4C4C4`), and `--neutral-400` (`#B0B0B0`), exposed as `--color-border-neutral`, `--color-border-neutral-hover`, and `--color-focus-neutral`. Shadow ink is `--black-a0` (`oklch(0 0 0 / 0)`), `--black-a12`, `--black-a16` (`oklch(0 0 0 / 0.16)`), and `--black-a24`.
 - **Type.** Font sizes are a minor third. Each step is 1.2 times the step below, and `--text-sm` is the `1rem` base. Primitives are `--text-2xs` `0.6944rem`, `--text-xs` `0.8333rem`, `--text-sm` `1rem`, `--text-md` `1.2rem`, `--text-lg` `1.44rem`, `--text-xl` `1.728rem`, `--text-2xl` `2.0736rem`, `--text-3xl` `2.4883rem`, and `--text-4xl` `2.986rem`. Line-heights are `--leading-tight` `1.1`, `--leading-snug` `1.4`, `--leading-normal` `1.5`, and `--leading-relaxed` `1.75`. Letter-spacing is `--tracking-tighter` `-0.02em`, `--tracking-tight` `-0.01em`, `--tracking-normal` `0em`, and `--tracking-wide` `0.04em`. Weights are `--weight-regular` `400`, `--weight-medium` `500`, `--weight-semibold` `600`, and `--weight-bold` `700` (Geist static weights). Families are `--font-sans` (Geist) and `--font-mono` (Geist Mono).
@@ -81,7 +99,7 @@ Shadow roles:
 
 ## Use ray-ui in another project
 
-The package name is `ray-ui`. Public components are exported from [`src/index.ts`](src/index.ts). The token stylesheet is exported as `ray-ui/tokens.css`.
+The package name is `ray-ui`. Public components are exported from [`src/index.ts`](src/index.ts). The token entry is exported as `ray-ui/tokens.css` and `ray-ui/styles/tokens.css`. The layers are also exported as `ray-ui/primitives.css` and `ray-ui/semantic.css`.
 
 Depend on this folder:
 
@@ -99,6 +117,15 @@ Load the tokens once, near the root of the app, and import the components you ne
 import "ray-ui/tokens.css";
 import { Button, Card, ChatComposer, ReplyBox, Switch, Text } from "ray-ui";
 ```
+
+`ray-ui/tokens.css` imports primitives, then semantic roles. `ray-ui/styles/tokens.css` is the same file. To assemble the layers yourself, import them in that order:
+
+```tsx
+import "ray-ui/primitives.css";
+import "ray-ui/semantic.css";
+```
+
+A dark theme, once it exists, is a third import after those. It remaps the semantic roles and leaves the primitives in place.
 
 React and React DOM are peer dependencies. The host app supplies them.
 

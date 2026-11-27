@@ -1,0 +1,125 @@
+/*
+  Raw values. Semantic tokens point at these names with var().
+  A theme leaves this file alone.
+*/
+
+:root {
+  /* Primitive: warm stone */
+  --stone-0: oklch(0.995 0.004 90);
+  --stone-50: oklch(0.975 0.012 88);
+  --stone-100: oklch(0.95 0.014 86);
+  --stone-200: oklch(0.91 0.016 84);
+  --stone-300: oklch(0.84 0.02 80);
+  --stone-400: oklch(0.72 0.022 70);
+  --stone-500: oklch(0.58 0.02 62);
+  --stone-600: oklch(0.49 0.02 58);
+  --stone-700: oklch(0.4 0.02 55);
+  --stone-800: oklch(0.335 0.02 53);
+  --stone-900: oklch(0.27 0.02 52);
+
+  /* Primitive: ink gray. Lighter steps meet the existing ink at 700. */
+  --gray-0: oklch(0.99 0 0);
+  --gray-50: oklch(0.96 0 0);
+  --gray-100: oklch(0.93 0 0);
+  --gray-200: oklch(0.88 0 0);
+  --gray-300: oklch(0.79 0 0);
+  --gray-400: oklch(0.64 0 0);
+  --gray-500: oklch(0.47 0 0);
+  --gray-600: oklch(0.35 0 0);
+  --gray-700: oklch(0.24 0 0);
+  --gray-800: oklch(0.2 0 0);
+  --gray-900: oklch(0.16 0 0);
+  --black-a0: oklch(0 0 0 / 0);
+  --black-a12: oklch(0 0 0 / 0.12);
+  --black-a16: oklch(0 0 0 / 0.16);
+  --black-a24: oklch(0 0 0 / 0.24);
+
+  /* Primitive: neutral hairlines. Between gray-100 and gray-300. */
+  --neutral-200: oklch(0.882 0 0);
+  --neutral-300: oklch(0.82 0 0);
+  --neutral-400: oklch(0.757 0 0);
+
+  /* Primitive: type.
+     Sizes are a minor third: each step is 1.2× the one below, base 1rem.
+     --text-sm is that base. Earlier sizes map to the nearest step:
+     0.75rem → --text-2xs, 0.875rem → --text-xs, 1rem → --text-sm, 2rem → --text-2xl.
+     Weights are the Geist static weights. */
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --text-2xs: 0.6944rem; /* 1.2^-2 */
+  --text-xs: 0.8333rem; /* 1.2^-1 */
+  --text-sm: 1rem; /* 1.2^0 */
+  --text-md: 1.2rem; /* 1.2^1 */
+  --text-lg: 1.44rem; /* 1.2^2 */
+  --text-xl: 1.728rem; /* 1.2^3 */
+  --text-2xl: 2.0736rem; /* 1.2^4 */
+  --text-3xl: 2.4883rem; /* 1.2^5 */
+  --text-4xl: 2.986rem; /* 1.2^6 */
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.4;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  --tracking-tighter: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.04em;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Primitive: space, radius */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --border-1: 1px;
+
+  /* Primitive: motion */
+  --time-150: 150ms;
+  --time-280: 280ms;
+  --time-360: 360ms;
+  --time-500: 500ms;
+  --time-700: 700ms;
+
+  --curve-linear: linear;
+  --curve-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --curve-out: cubic-bezier(0, 0, 0.58, 1);
+  --curve-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --curve-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --curve-spring: linear(
+    0,
+    0.006,
+    0.025 2.2%,
+    0.101 4.6%,
+    0.539 15.5%,
+    0.721 21%,
+    0.849 26.5%,
+    0.937 32.3%,
+    0.968 35.6%,
+    0.989 39.1%,
+    1.001 42.8%,
+    1.006 46.8%,
+    1.007 51.1%,
+    1.005 55.7%,
+    1.002 61%,
+    1 72.6%,
+    1
+  );
+}
